@@ -11,7 +11,7 @@ module.exports = {
     'plugin:prettier/recommended',
   ],
   parser: '@typescript-eslint/parser',
-  plugins: ['@typescript-eslint', 'prettier'],
+  plugins: ['svelte3', '@typescript-eslint', 'prettier'],
   rules: {
     'import/extensions': 0,
     'import/no-unresolved': 0,
@@ -27,5 +27,15 @@ module.exports = {
         endOfLine: 'auto',
       },
     ],
+  },
+  overrides: [
+    {
+      files: ['*.svelte'],
+      processor: 'svelte3/svelte3',
+    },
+  ],
+  settings: {
+    // eslint-disable-next-line global-require
+    'svelte3/typescript': () => require('typescript'),
   },
 }
